@@ -1,5 +1,7 @@
 # Esports Manager 2026 EMDB Tools & Local Editer
 
+## This project utilized AI applications such as CodeX for generation.
+
 [English](#english) · [简体中文](#简体中文)
 
 An unofficial, local-first toolkit for decrypting, editing, and encrypting
@@ -32,31 +34,12 @@ A Windows GUI and Python CLI that:
 
 - Decrypts `.emdb` files into a CRC-validated ZIP and extracted CSV directory.
 - Encrypts an existing ZIP or CSV directory into a game-compatible EMDB v3 file.
-- Automatically discovers Steam libraries and the `Esports Manager 2026` install.
-- Recovers AES-128/192/256 hexadecimal key literals from `global-metadata.dat`.
-- Generates a fresh random 12-byte nonce for every AES-GCM encryption.
-- Validates the authentication tag and performs a full read-back check.
-- Makes no network requests and does not launch or inject into the game process.
 
 #### EMDB Local Editer
 
 A local browser workbench that:
 
-- Opens only a ZIP explicitly selected by the user; samples are never auto-loaded.
 - Edits Players, Staff, Teams, Sponsors, Tournaments, and roster order.
-- Supports complete **Simplified Chinese / English** interface switching.
-- Provides searchable tables, all-field editing, validation, undo, and redo.
-- Lets every dropdown be searched by typing a keyword.
-- Provides countries, cities, roles, player positions, sponsor categories, maps,
-  and cross-table team/player relationships.
-- Requires a tournament country before its city is enabled and only accepts a
-  city belonging to that country.
-- Creates blank records or copies an existing record with a new identifier.
-- Automatically attempts to load HTTP(S) image fields and shows a thumbnail,
-  loading state, failure state, and original-image link.
-- Shows game custom-asset paths, generated PNG names, and recommended sizes.
-- Preserves unrelated ZIP entries and exports a new `_edited.zip` archive.
-- Parses and repacks ZIP data in browser memory without uploading the database.
 
 ### Project layout
 
@@ -240,52 +223,6 @@ roster_order.json
 CSV files use a semicolon delimiter. Existing field order and unrelated ZIP
 members are preserved.
 
-### Searchable fields and relationships
-
-Fields with predefined or related values use searchable combination inputs.
-Click the field and type any part of a country, role, position, sponsor type,
-team, player, map, or other option to narrow the list. Existing custom values
-remain editable.
-
-Relationships include:
-
-- `Players.Team`, `Staff.Team`, and roster teams → `Teams.Nick`.
-- Team academy → teams.
-- Starting IGL and roster player → players.
-- Tournament country → only the configured cities in that country.
-
-Tournament city stays disabled until a country is selected. Changing the
-country clears a city that no longer matches; an unmatched city is cleared when
-the field loses focus and is also reported by validation.
-
-### Network image preview
-
-When an HTTP(S) image address appears in an image-related field such as
-`PhotoUrl`, or the URL ends in a common image extension, the editor automatically
-requests it and displays a thumbnail. The preview uses lazy loading and does not
-embed the image into the exported ZIP.
-
-Important privacy note: loading a remote image sends a normal browser image
-request to that URL. The remote host can see ordinary request information such
-as the user's IP address. The database ZIP itself is still never uploaded.
-Hotlink protection, expired URLs, offline hosts, or invalid certificates can
-cause the preview to fail; the original URL remains editable.
-
-### Game custom images
-
-The editor generates the expected PNG name and shows these directories:
-
-```text
-%USERPROFILE%\AppData\LocalLow\NeuronaGames\EsportsManager\CustomAssets\Players
-%USERPROFILE%\AppData\LocalLow\NeuronaGames\EsportsManager\CustomAssets\Teams
-%USERPROFILE%\AppData\LocalLow\NeuronaGames\EsportsManager\CustomAssets\Staffs
-%USERPROFILE%\AppData\LocalLow\NeuronaGames\EsportsManager\CustomAssets\Sponsors
-%USERPROFILE%\AppData\LocalLow\NeuronaGames\EsportsManager\CustomAssets\Tournaments
-```
-
-Player and staff files use `Internal ID`; team and tournament files use the
-full name; sponsor files use the sponsor number.
-
 ### Development and tests
 
 From `web-editor/`:
@@ -295,10 +232,6 @@ npm run dev
 npm run build
 npm test
 ```
-
-Tests cover the production build, rendered editor shell, country/city catalog,
-searchable inputs, bilingual UI, network-image preview, nested ZIP discovery,
-and unrelated-entry preservation.
 
 ### Troubleshooting
 
@@ -332,8 +265,6 @@ requests or require authentication. This does not prevent editing or exporting.
 ### Privacy, safety, and limitations
 
 - EMDB encryption/decryption and ZIP editing are local.
-- The Tool makes no network requests.
-- The Editer requests only image URLs present in image fields for thumbnail preview.
 - Neither application reads Steam passwords, browser sessions, or login tokens.
 - Neither application launches, injects into, or modifies the running game process.
 - ZIP paths are validated before extraction by the Tool.
@@ -370,26 +301,10 @@ requests or require authentication. This does not prevent editing or exporting.
 
 - 将 `.emdb` 解密为经过 CRC 校验的 ZIP 和 CSV 目录。
 - 将 CSV 目录或现有 ZIP 加密为游戏兼容的 EMDB v3。
-- 自动查找 Steam 库、游戏安装目录和 `global-metadata.dat`。
-- 自动恢复 AES-128/192/256 十六进制密钥候选。
-- 每次加密生成新的随机 12 字节 nonce。
-- 校验 AES-GCM 标签并执行完整回读验证。
-- 不联网、不启动游戏，也不注入游戏进程。
 
 #### EMDB Local Editer
 
-- 只打开用户主动选择的 ZIP，不会自动加载示例数据库。
 - 编辑选手、员工、战队、赞助商、锦标赛和阵容顺序。
-- 完整支持简体中文和英语界面切换。
-- 支持搜索、全部字段编辑、校验、撤销和重做。
-- 所有下拉选项都可以输入关键字进行匹配。
-- 国家、地区、职务、选手定位、赞助商类型、地图、战队和选手关联可直接选择。
-- 锦标赛必须先选择国家，地区只能使用属于该国家的城市。
-- 可以创建空白记录或复制现有记录，并生成不冲突的标识。
-- 网络图片字段会自动尝试加载，显示缩略图、加载状态、失败提示和原图链接。
-- 显示游戏自定义图片目录、自动文件名和推荐尺寸。
-- 保留 ZIP 内无关文件，并导出新的 `_edited.zip`。
-- 数据库 ZIP 只在浏览器内存中解析和重新打包，不会上传。
 
 ### 项目目录
 
@@ -552,50 +467,6 @@ roster_order.json
 
 CSV 使用分号分隔。编辑器会保持字段顺序，并保留 ZIP 内其他文件。
 
-### 可搜索下拉与数据关联
-
-具有固定选项或关联数据的字段使用可搜索组合框。点击字段后输入国家、职务、定位、
-赞助商类型、战队、选手或地图名称中的任意关键字，即可缩小匹配列表。已有自定义值
-仍然可以编辑。
-
-主要关联：
-
-- `Players.Team`、`Staff.Team`、阵容战队 → `Teams.Nick`。
-- 青训战队 → 战队表。
-- 首发 IGL、阵容选手 → 选手表。
-- 锦标赛国家 → 该国家对应的城市。
-
-未选择国家时，锦标赛地区保持禁用。更改国家会清除不匹配的地区；输入不匹配的
-地区并离开字段时也会自动清除，同时显示校验提示。
-
-### 中英文切换
-
-点击顶部的 `EN` 或“中文”按钮切换语言。数据表名称、按钮、字段标签、校验信息、
-工作流说明、结构分析和图片提示都会切换；数据库中的实际字段值不会被翻译或改写。
-
-### 网络图片预览
-
-当 `PhotoUrl` 等图片字段包含 HTTP(S) 地址，或 URL 以常见图片扩展名结尾时，编辑器
-会自动请求网络图片并显示缩略图。图片使用懒加载，不会写入导出的 ZIP。
-
-隐私说明：加载网络图片会向该图片地址发出普通浏览器请求，远程服务器可能看到
-用户 IP 等常规请求信息；数据库 ZIP 本身仍然不会上传。防盗链、地址过期、服务器
-离线或证书错误可能导致预览失败，但不会阻止字段编辑和 ZIP 导出。
-
-### 游戏自定义图片
-
-编辑器会自动生成 PNG 名称，并显示以下目录：
-
-```text
-%USERPROFILE%\AppData\LocalLow\NeuronaGames\EsportsManager\CustomAssets\Players
-%USERPROFILE%\AppData\LocalLow\NeuronaGames\EsportsManager\CustomAssets\Teams
-%USERPROFILE%\AppData\LocalLow\NeuronaGames\EsportsManager\CustomAssets\Staffs
-%USERPROFILE%\AppData\LocalLow\NeuronaGames\EsportsManager\CustomAssets\Sponsors
-%USERPROFILE%\AppData\LocalLow\NeuronaGames\EsportsManager\CustomAssets\Tournaments
-```
-
-选手和员工使用 `Internal ID`；战队和锦标赛使用全名；赞助商使用赞助商编号。
-
 ### 开发与测试
 
 进入 `web-editor/` 后运行：
@@ -605,9 +476,6 @@ npm run dev
 npm run build
 npm test
 ```
-
-测试覆盖生产构建、页面外壳、国家/城市目录、可搜索输入、中英文界面、网络图片预览、
-嵌套 ZIP 识别和无关文件保留。
 
 ### 常见问题
 
@@ -639,8 +507,6 @@ npm test
 ### 隐私、安全与限制
 
 - EMDB 加密、解密和 ZIP 编辑均在本地完成。
-- Tool 不会发起网络请求。
-- Editer 只会为缩略图预览请求图片字段中已有的网络地址。
 - 不读取 Steam 密码、浏览器会话或登录令牌。
 - 不启动、注入或修改正在运行的游戏进程。
 - Tool 在解压前检查 ZIP 路径，防止目录穿越。
