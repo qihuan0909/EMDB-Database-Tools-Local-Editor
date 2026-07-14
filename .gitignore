@@ -1,0 +1,20 @@
+# Local agent/runtime metadata
+/.agents/
+__pycache__/
+*.py[cod]
+
+# Generated release workspace and archives
+/.release-staging/
+/EMDB Database Tools & Local Editer_Release_Win_V1.0.0/
+/EMDB-Database-Tools-Local-Editer-v*-Windows.zip
+
+# Web editor dependencies and generated output
+/web-editor/node_modules/
+/web-editor/build/
+/web-editor/dist/
+/web-editor/.next/
+/web-editor/.vinext/
+/web-editor/.wrangler/
+/web-editor/.openai/
+/web-editor/dev-server.*.log
+/web-editor/*.tsbuildinfo

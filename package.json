@@ -1,0 +1,7 @@
+{
+  "name": "emdb-local-editer-launcher",
+  "private": true,
+  "scripts": {
+    "start": "node Start_EMDB_Editor.js"
+  }
+}
