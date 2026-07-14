@@ -11,12 +11,12 @@ An unofficial, local-first toolkit for decrypting, editing, and encrypting
 applications:
 
 - **EMDB Tool** decrypts and encrypts the game database container.
-- **EMDB Local Editer** opens the decrypted ZIP in a bilingual browser editor.
+- **EMDB Local Editor** opens the decrypted ZIP in a bilingual browser editor.
 
 The complete workflow is local:
 
 ```text
-.emdb → EMDB Tool decrypt → decrypted.zip → Local Editer
+.emdb → EMDB Tool decrypt → decrypted.zip → Local Editor
       → edited.zip → EMDB Tool encrypt → custom.emdb
 ```
 
@@ -37,7 +37,7 @@ A Windows GUI and Python CLI that:
 - Decrypts `.emdb` files into a CRC-validated ZIP and extracted CSV directory.
 - Encrypts an existing ZIP or CSV directory into a game-compatible EMDB v3 file.
 
-#### EMDB Local Editer
+#### EMDB Local Editor
 
 A local browser workbench that:
 
@@ -49,10 +49,10 @@ A local browser workbench that:
 EMDB_Tool.exe         Packaged Windows EMDB Tool
 decrypt_emdb.py       Python GUI, CLI, encryption, and decryption source
 requirements.txt      Python source dependency list
-Start_EMDB_Editor.js  Node.js launcher for EMDB Local Editer
+Start_EMDB_Editor.js  Node.js launcher for EMDB Local Editor
 web-editor/           Local editor source, dependencies, and tests
 samples/              Example encrypted database and decrypted ZIP
-README.md             Combined Tool and Editer documentation
+README.md             Combined Tool and Editor documentation
 LICENSE               Project license
 ```
 
@@ -175,7 +175,7 @@ python -m PyInstaller `
 
 The result is written to `dist\EMDB_Tool.exe`.
 
-## EMDB Local Editer
+## EMDB Local Editor
 
 ### Requirements and launch
 
@@ -285,12 +285,12 @@ requests or require authentication. This does not prevent editing or exporting.
 这是一个非官方、本地优先的 `Esports Manager 2026` EMDB 数据库工具套件：
 
 - **EMDB Tool**：负责解密和重新加密游戏数据库。
-- **EMDB Local Editer**：在浏览器中编辑解密后的 ZIP，支持中英文切换。
+- **EMDB Local Editor**：在浏览器中编辑解密后的 ZIP，支持中英文切换。
 
 完整流程：
 
 ```text
-.emdb → EMDB Tool 解密 → decrypted.zip → Local Editer
+.emdb → EMDB Tool 解密 → decrypted.zip → Local Editor
       → edited.zip → EMDB Tool 加密 → custom.emdb
 ```
 
@@ -304,7 +304,7 @@ requests or require authentication. This does not prevent editing or exporting.
 - 将 `.emdb` 解密为经过 CRC 校验的 ZIP 和 CSV 目录。
 - 将 CSV 目录或现有 ZIP 加密为游戏兼容的 EMDB v3。
 
-#### EMDB Local Editer
+#### EMDB Local Editor
 
 - 编辑选手、员工、战队、赞助商、锦标赛和阵容顺序。
 
@@ -314,10 +314,10 @@ requests or require authentication. This does not prevent editing or exporting.
 EMDB_Tool.exe         Windows 打包版 EMDB Tool
 decrypt_emdb.py       Python 图形界面、命令行、加密与解密源码
 requirements.txt      Python 源码依赖列表
-Start_EMDB_Editor.js  EMDB Local Editer 的 Node.js 启动器
+Start_EMDB_Editor.js  EMDB Local Editor 的 Node.js 启动器
 web-editor/           编辑器源码、依赖和测试
 samples/              加密数据库和解密 ZIP 示例
-README.md             Tool 与 Editer 的合并说明
+README.md             Tool 与 Editor 的合并说明
 LICENSE               项目许可证
 ```
 
@@ -410,7 +410,7 @@ python -m PyInstaller --noconfirm --clean --onefile --windowed `
 
 生成文件位于 `dist\EMDB_Tool.exe`。
 
-## EMDB Local Editer 使用方法
+## EMDB Local Editor 使用方法
 
 ### 运行要求与启动
 
@@ -445,7 +445,7 @@ node .\Start_EMDB_Editor.js --check
 ### 编辑流程
 
 1. 使用 EMDB Tool 解密 `.emdb`。
-2. 启动 Local Editer，点击“上传 ZIP”。
+2. 启动 Local Editor，点击“上传 ZIP”。
 3. 选择生成的 `<数据库名>_decrypted.zip`。
 4. 选择数据表，搜索并编辑记录。
 5. 使用“新建”创建空白记录，或使用“复制为新记录”作为模板。
@@ -518,6 +518,6 @@ npm test
 
 
 
-<details> <summary>secret</summary>
-Damn, I'm not a native English speaker, and by the time I realized "Editer" was a typo, it was already too late. Oh well. -- But I have another explanation: Emdb Database Integrated Tool for Editing Resources (EDITER)
+<details> <summary>Name history</summary>
+The project originally used a misspelled form of "Editor". The name has now been corrected throughout the source, interface, packages, documentation, repository, and releases.
 </details>

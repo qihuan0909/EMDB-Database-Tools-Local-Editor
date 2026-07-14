@@ -629,7 +629,7 @@ export default function Home() {
   return (
     <main className="app-shell" lang={english ? "en" : "zh-CN"}>
       <header className="topbar">
-        <div className="brand"><span className="brand-mark">E</span><div><strong>EMDB <em>LOCAL EDITER</em></strong><small>Unrestricted local database workbench</small></div></div>
+        <div className="brand"><span className="brand-mark">E</span><div><strong>EMDB <em>LOCAL EDITOR</em></strong><small>Unrestricted local database workbench</small></div></div>
         <div className="topbar-center">
           <span className={`connection-dot ${loaded ? "online" : ""}`} />
           <div><strong>{loaded ? archiveName : t("未载入数据库", "No database loaded")}</strong><small>{message[locale]}</small></div>

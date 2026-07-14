@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "EMDB Local Editer",
+  title: "EMDB Local Editor",
   description: "A bilingual local workbench for uploading, editing, previewing, and exporting EMDB database ZIP files.",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };

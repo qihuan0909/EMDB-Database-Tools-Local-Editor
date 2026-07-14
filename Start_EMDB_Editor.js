@@ -9,7 +9,7 @@ const lockPath = path.join(projectDir, "package-lock.json");
 const localUrl = "http://localhost:3000/";
 
 function print(message) {
-  process.stdout.write(`[EMDB Local Editer] ${message}\n`);
+  process.stdout.write(`[EMDB Local Editor] ${message}\n`);
 }
 
 function checkNodeVersion() {
@@ -30,7 +30,7 @@ function getServerStatus() {
       response.on("end", () => {
         const reachable = response.statusCode >= 200 && response.statusCode < 500;
         if (!reachable) resolve("free");
-        else resolve(body.includes("EMDB Local Editer") ? "editor" : "occupied");
+        else resolve(body.includes("EMDB Local Editor") ? "editor" : "occupied");
       });
     });
     request.on("timeout", () => { request.destroy(); resolve("free"); });
@@ -90,13 +90,13 @@ async function main() {
     return;
   }
   if (serverStatus === "occupied") {
-    throw new Error(`Port 3000 is already used by another application. Close it before starting EMDB Local Editer.`);
+    throw new Error(`Port 3000 is already used by another application. Close it before starting EMDB Local Editor.`);
   }
   await installDependencies();
   await startServer();
 }
 
 main().catch((error) => {
-  process.stderr.write(`\n[EMDB Local Editer] ${error.message}\n`);
+  process.stderr.write(`\n[EMDB Local Editor] ${error.message}\n`);
   process.exitCode = 1;
 });

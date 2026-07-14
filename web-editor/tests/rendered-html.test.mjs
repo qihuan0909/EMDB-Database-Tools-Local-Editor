@@ -18,7 +18,7 @@ test("server-renders the EMDB editor shell", async () => {
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /<title>EMDB Local Editer/);
+  assert.match(html, /<title>EMDB Local Editor/);
   assert.match(html, /上传解密 ZIP/);
   assert.match(html, /上传 \.zip 文件/);
   assert.match(html, /本地优先/);
@@ -33,6 +33,6 @@ test("starter preview is fully removed", async () => {
     readFile(new URL("package.json", root), "utf8"),
   ]);
   assert.doesNotMatch(page, /SkeletonPreview|codex-preview/);
-  assert.match(layout, /EMDB Local Editer/);
+  assert.match(layout, /EMDB Local Editor/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 });
