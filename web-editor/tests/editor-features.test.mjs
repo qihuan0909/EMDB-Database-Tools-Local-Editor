@@ -47,3 +47,10 @@ test("launcher distinguishes EMDB editor from an unrelated service", async () =>
   assert.match(launcher, /serverStatus === "occupied"/);
   assert.match(launcher, /existsSync\(lockPath\) \? "ci" : "install"/);
 });
+
+test("local Vite config does not depend on generated hosting files", async () => {
+  const config = await readFile(new URL("../vite.config.ts", import.meta.url), "utf8");
+  assert.doesNotMatch(config, /\.openai\/hosting\.json/);
+  assert.doesNotMatch(config, /build\/sites-vite-plugin/);
+  assert.match(config, /plugins: \[vinext\(\)\]/);
+});
