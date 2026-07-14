@@ -516,6 +516,8 @@ npm test
 - 校验可以发现已知结构与关联问题，但不能保证兼容所有未来游戏版本。
 - 游戏更新可能改变容器、密钥表示、字段、有效值或图片目录。
 
+
+
 <details>
-<summary>Damn, I'm not a native English speaker, so by the time I realized "Editer" was a typo, it was already too late—oh well.</summary>
+Damn, I'm not a native English speaker, and by the time I realized "Editer" was a typo, it was already too late. Oh well.
 </details>
